@@ -8,3 +8,5 @@ DB_PORT = '3306'
 DB_DATABASE = 'intelligence'
 DB_USERNAME = 'root'
 DB_PASSWORD = '36524000'
+
+# Hi
