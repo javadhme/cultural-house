@@ -16,7 +16,7 @@ venv.bak/
 .idea
 logs/*.log
 
-intelligence_panel/local_settings.py
+cultural_house_warriors/local_settings.py
 *.log
 
 tmp/
