@@ -40,6 +40,7 @@ SITUATION_CHOICES = [
 class Report(models.Model):
     STATUS_CHOICES = [(0, 'inactive'), (1, 'active')]
 
+    image = models.ImageField(upload_to="images/soldiers", verbose_name='Image')
     membership_type = models.SmallIntegerField(choices=MEMBERSHIP_TYPE_CHOICES)
     situation = models.SmallIntegerField(choices=SITUATION_CHOICES)
     owner_phone = models.CharField(max_length=18)
