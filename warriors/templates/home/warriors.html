@@ -1,5 +1,6 @@
 {% extends 'layouts/main.html' %}
 {% load staticfiles %}
+{% load i18n %}
 
 
 {% block main %}
@@ -31,9 +32,10 @@
                         {% csrf_token %}
 
                         <div class="row justify-content-center">
+
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
-                                    <img src="{% static 'home/assets/img/theme/team-4-800x800.jpg' %}" alt="">
+                                    <img id="blah" src="{% static 'home/assets/img/theme/default_800.png' %}" alt="">
                                 </div>
                             </div>
 
@@ -41,20 +43,12 @@
 
                                 <div class="card-profile-actions py-4 mt-lg-0">
                                     <div class="form-group">
-                                        <select name="membership_type" class="form-control form-control-alternative">
-                                            <option value="">membership</option>
-                                            {% for k, v in memberships %}
-                                                <option value="{{ k }}">{{ v }}</option>
-                                            {% endfor %}
-                                        </select>
+                                        <div class="input-group to_rtl">
+                                           <input type="text" name="photographer_name" placeholder="{% trans "Photographer name" %}" class="form-control" />
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <select name="situation" class="form-control form-control-alternative">
-                                            <option value="">situation</option>
-                                            {% for k, v in situations %}
-                                                <option value="{{ k }}">{{ v }}</option>
-                                            {% endfor %}
-                                        </select>
+                                    <div class="form-group to_rtl">
+                                        <input name="image" type='file' onchange="readURL(this);" class="form-control form-control-alternative"/>
                                     </div>
                                 </div>
                             </div>
@@ -66,12 +60,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                             </div>
-                                            <input name="shooting_date" class="form-control datepicker" placeholder="shooting date" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                           <input type="text" name="photographer_name" placeholder="photographer name" class="form-control" />
+                                            <input name="shooting_date" style="text-align: right" class="form-control datepicker" placeholder="{% trans "Shooting date" %}" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -79,19 +68,19 @@
                         </div>
 
                         <div class="text-center mt-5">
-                            <table class="table">
-                                <caption>List of soldier</caption>
+                            <table class="table to_rtl">
+                                <caption class="to_rtl">{% trans "List of soldier" %}</caption>
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">name</th>
-                                        <th scope="col">father</th>
-                                        <th scope="col">responsibility</th>
-                                        <th scope="col">membership</th>
-                                        <th scope="col">situation</th>
-                                        <th scope="col">workplace</th>
-                                        <th scope="col">phone</th>
-                                        <th scope="col">position</th>
+                                        <th scope="col">{% trans "Surname" %}</th>
+                                        <th scope="col">{% trans "Father name" %}</th>
+                                        <th scope="col">{% trans "Responsibility" %}</th>
+                                        <th scope="col">{% trans "Membership type" %}</th>
+                                        <th scope="col">{% trans "Situation" %}</th>
+                                        <th scope="col">{% trans "Workplace" %}</th>
+                                        <th scope="col">{% trans "Phone" %}</th>
+                                        <th scope="col">{% trans "Type" %}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -139,33 +128,33 @@
 
 
                         <div class="text-center mt-5">
-                            <table class="table">
+                            <table class="table to_rtl">
                                 <tbody>
                                     <tr>
-                                        <td><label for="owner_phone">owner phone</label></td>
+                                        <td><label for="owner_phone">{% trans "Own phone" %}</label></td>
                                         <td><input type="text" name="owner_phone" id="owner_phone" class="form-control" /></td>
-                                        <td><label for="division_commander">division commander</label></td>
+                                        <td><label for="division_commander">{% trans "Division commander" %}</label></td>
                                         <td><input type="text" name="division_commander" id="division_commander" class="form-control" /></td>
                                     </tr>
 
                                     <tr>
-                                        <td><label for="operational_area">operational area</label></td>
+                                        <td><label for="operational_area">{% trans "Operational area" %}</label></td>
                                         <td><input type="text" name="operational_area" id="operational_area" class="form-control" /></td>
-                                        <td><label for="company_commander">company commander</label></td>
+                                        <td><label for="company_commander">{% trans "Company commander" %}</label></td>
                                         <td><input type="text" name="company_commander" id="company_commander" class="form-control" /></td>
                                     </tr>
 
                                     <tr>
-                                        <td><label for="photographer_position">photographer position</label></td>
+                                        <td><label for="photographer_position">{% trans "Photographer address" %}</label></td>
                                         <td><input type="text" name="photographer_position" id="photographer_position" class="form-control" /></td>
-                                        <td><label for="battalion_commander">battalion commander</label></td>
+                                        <td><label for="battalion_commander">{% trans "Battalion commander" %}</label></td>
                                         <td><input type="text" name="battalion_commander" id="battalion_commander" class="form-control" /></td>
                                     </tr>
 
                                     <tr>
-                                        <td><label for="camp_name">camp name</label></td>
+                                        <td><label for="camp_name">{% trans "Camp name" %}</label></td>
                                         <td><input type="text" name="camp_name" id="camp_name" class="form-control" /></td>
-                                        <td><label for="batch_commander">batch commander</label></td>
+                                        <td><label for="batch_commander">{% trans "Batch commander" %}</label></td>
                                         <td><input type="text" name="batch_commander" id="batch_commander" class="form-control" /></td>
                                     </tr>
                                 </tbody>
@@ -173,16 +162,16 @@
                         </div>
 
                         <div class="text-center mt-5">
-                            <textarea name="description" id="description" placeholder="description" cols="30" rows="10" class="form-control"></textarea>
+                            <textarea name="description" id="description" placeholder="{% trans "Description" %}" cols="30" rows="10" class="form-control to_rtl"></textarea>
                         </div>
 
                         <div class="text-center mt-5">
-                            <table class="table">
+                            <table class="table to_rtl">
                                 <tbody>
                                     <tr>
-                                        <td><label for="surname">surname</label></td>
+                                        <td><label for="surname">{% trans "Surname" %}</label></td>
                                         <td><input type="text" name="surname" id="surname" class="form-control" /></td>
-                                        <td><label for="supervisor">supervisor</label></td>
+                                        <td><label for="supervisor">{% trans "Supervisor" %}</label></td>
                                         <td><input type="text" name="supervisor" id="supervisor" class="form-control" /></td>
                                     </tr>
                                 </tbody>
@@ -193,7 +182,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-9">
                                     <button class="btn btn-icon btn-2 btn-primary" type="submit">
-                                        <span class="btn-inner--icon"><i class="ni ni-send"></i> Send info</span>
+                                        <span class="btn-inner--icon"><i class="ni ni-send"></i> {% trans "Send info" %}</span>
                                     </button>
                                 </div>
                             </div>

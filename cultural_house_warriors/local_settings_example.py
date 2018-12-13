@@ -8,3 +8,7 @@ DB_PORT = '3306'
 DB_DATABASE = 'homestead'
 DB_USERNAME = 'homestead'
 DB_PASSWORD = 'secret'
+
+LANG = 'fa'
+TIMEZONE = 'Asia/Tehran'
+MULTI_LANG = (('en-us', 'English'), ('fa', 'فارسی'))
