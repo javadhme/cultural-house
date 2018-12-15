@@ -30,11 +30,13 @@ class Warriors(TemplateView):
         return render(request, self.template_name, context)
 
     def post(self, request):
+        data = request.POST
+        # TODO: save data to models
+
         context = dict(
             memberships=MEMBERSHIP_TYPE_CHOICES,
             situations=SITUATION_CHOICES,
             soldiers_type=Soldier.TYPE_CHOICES,
             soldiers_count=range(1, 6),
         )
-        print(request.POST)
         return render(request, self.template_name, context)

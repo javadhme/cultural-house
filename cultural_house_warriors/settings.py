@@ -11,6 +11,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'jet',
     'jet.dashboard',
+    'rest_framework',
     'easy_thumbnails',
     'warriors.apps.WarriorsConfig',
     'django.contrib.admin',
@@ -20,6 +21,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
+    'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer', ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'services.auth.auth_requests.AuthDevice',
+    # ),
+    "UNAUTHENTICATED_USER": None,
+    'EXCEPTION_HANDLER': 'services.exceptions.exceptions_handler.custom_exception_handler',
+}
 
 THUMBNAIL_ALIASES = {
     '': {
