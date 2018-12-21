@@ -85,14 +85,15 @@
                                 </thead>
                                 <tbody>
                                 {% for i in soldiers_count %}
+                                    <input name="count" type="hidden" value="{{ i }}">
                                     <tr>
                                         <th scope="row">{{ i }}</th>
-                                        <td><input type="text" name="soldier_name" class="form-control" /></td>
-                                        <td><input type="text" name="father_name" class="form-control" /></td>
-                                        <td><input type="text" name="responsibility" class="form-control" /></td>
+                                        <td><input type="text" name="soldier_name_{{ i }}" class="form-control" /></td>
+                                        <td><input type="text" name="father_name_{{ i }}" class="form-control" /></td>
+                                        <td><input type="text" name="responsibility_{{ i }}" class="form-control" /></td>
 
                                         <td>
-                                            <select name="soldier_membership_type" class="form-control form-control-alternative">
+                                            <select name="membership_type_{{ i }}" class="form-control form-control-alternative">
                                                 <option value="">...</option>
                                                 {% for k, v in memberships %}
                                                     <option value="{{ k }}">{{ v }}</option>
@@ -101,7 +102,7 @@
                                         </td>
 
                                         <td>
-                                            <select name="soldier_situation" class="form-control form-control-alternative">
+                                            <select name="situation_{{ i }}" class="form-control form-control-alternative">
                                                 <option value="">...</option>
                                                 {% for k, v in situations %}
                                                     <option value="{{ k }}">{{ v }}</option>
@@ -109,11 +110,11 @@
                                             </select>
                                         </td>
 
-                                        <td><input type="text" name="workplace" class="form-control" /></td>
-                                        <td><input type="text" name="phone" class="form-control" /></td>
+                                        <td><input type="text" name="workplace_{{ i }}" class="form-control" /></td>
+                                        <td><input type="text" name="phone_{{ i }}" class="form-control" /></td>
 
                                         <td>
-                                            <select name="soldier_type" class="form-control form-control-alternative">
+                                            <select name="type_{{ i }}" class="form-control form-control-alternative">
                                                 <option value="">...</option>
                                                 {% for k, v in soldiers_type %}
                                                     <option value="{{ k }}">{{ v }}</option>
