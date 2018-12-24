@@ -34,11 +34,11 @@ class Warriors(TemplateView):
         data = request.POST
 
         report = Report(
-            image="images/soldiers",
+            image=request.FILES['image'],
             owner_phone=data.get('owner_phone'),
             photographer_name=data.get('photographer_name'),
             photographer_address=data.get('photographer_position'),
-            shooting_date=datetime.now().date(),  # data.get('shooting_date')
+            shooting_date=datetime.now().date(),
             camp_name=data.get('camp_name'),
             operational_area=data.get('operational_area'),
             division_commander=data.get('division_commander'),
@@ -70,13 +70,21 @@ class Warriors(TemplateView):
 
         try:
             Soldier.objects.bulk_create(soldiers)
+            icon = 'ni ni-like-2'
+            msg = 'Add Warriors Successful'
+            valid = 'alert-success'
         except Exception as e:
-            print(e)
+            icon = 'ni ni-support-16'
+            msg = str(e)
+            valid = 'alert-danger'
 
         context = dict(
             memberships=MEMBERSHIP_TYPE_CHOICES,
             situations=SITUATION_CHOICES,
             soldiers_type=Soldier.TYPE_CHOICES,
             soldiers_count=range(1, 6),
+            valid=valid,
+            icon=icon,
+            message=msg
         )
         return render(request, self.template_name, context)
