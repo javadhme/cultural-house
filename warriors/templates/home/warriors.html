@@ -16,12 +16,6 @@
             <span></span>
             <span></span>
         </div>
-        <!-- SVG separator -->
-        <div class="separator separator-bottom separator-skew">
-            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-            </svg>
-        </div>
     </section>
 
     <section class="section">
@@ -40,44 +34,59 @@
                         {% csrf_token %}
 
                         <div class="row justify-content-center">
-
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
-                                    <img id="blah" src="{% static 'home/assets/img/theme/default_800.png' %}" alt="">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-
-                                <div class="card-profile-actions py-4 mt-lg-0">
-                                    <div class="form-group">
-                                        <div class="input-group to_rtl">
-                                           <input type="text" required name="photographer_name" placeholder="{% trans "Photographer name" %}" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group to_rtl">
-                                        <input name="image" required type='file' onchange="readURL(this);" class="form-control form-control-alternative"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 order-lg-1">
-                                <div class="card-profile-actions py-4 mt-lg-0">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                            </div>
-                                            <input name="shooting_date" required style="text-align: right" class="form-control datepicker" placeholder="{% trans "Shooting date" %}" type="text">
-                                        </div>
-                                    </div>
+                                    <img id="blah" src="{% static 'home/assets/img/theme/default_800x400.png' %}" alt="">
                                 </div>
                             </div>
                         </div>
 
+                        <br>
+                        <br>
+                        <br>
+                        <div class="text-center mt-5"><div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center"><div class="card-profile-actions py-4 mt-lg-0"></div></div></div>
+                        <div class="text-center mt-5"><div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center"><div class="card-profile-actions py-4 mt-lg-0"></div></div></div>
+
+                        <div class="text-center mt-5">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 0;"></td>
+                                        <td style="border: 0;">
+                                            <div class="form-group to_rtl">
+                                                <input name="image" required type='file' onchange="readURL(this);" class="form-control form-control-alternative"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 0;">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                                    </div>
+                                                    <input name="shooting_date" required style="text-align: right" class="form-control datepicker" placeholder="{% trans "Shooting date" %}" type="text">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="border: 0;">
+                                            <div class="form-group">
+                                                <div class="input-group to_rtl">
+                                                   <input type="text" required name="photographer_name" placeholder="{% trans "Photographer name" %}" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                         <div class="text-center mt-5">
                             <table class="table to_rtl">
-                                <caption class="to_rtl">{% trans "List of soldier" %}</caption>
+                                <caption class="to_rtl">
+                                    <a id="add_soldier"><i class="fa fa-plus-circle" style="font-size: 24px"></i></a>
+                                    {% trans "List of soldier" %}
+                                </caption>
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -91,10 +100,10 @@
                                         <th scope="col">{% trans "Type" %}</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="add_row">
                                 {% for i in soldiers_count %}
-                                    <input name="count" type="hidden" value="{{ i }}">
                                     <tr>
+                                        <input name="count" type="hidden" value="{{ i }}">
                                         <th scope="row">{{ i }}</th>
                                         <td><input type="text" name="soldier_name_{{ i }}" class="form-control" /></td>
                                         <td><input type="text" name="father_name_{{ i }}" class="form-control" /></td>

@@ -8,16 +8,6 @@ def index(request):
     return render(request, 'home/index.html')
 
 
-def warriors(request):
-    context = dict(
-        memberships=MEMBERSHIP_TYPE_CHOICES,
-        situations=SITUATION_CHOICES,
-        soldiers_type=Soldier.TYPE_CHOICES,
-        soldiers_count=range(1, 6),
-    )
-    return render(request, 'home/warriors.html', context)
-
-
 class Warriors(TemplateView):
     template_name = 'home/warriors.html'
 
@@ -26,7 +16,7 @@ class Warriors(TemplateView):
             memberships=MEMBERSHIP_TYPE_CHOICES,
             situations=SITUATION_CHOICES,
             soldiers_type=Soldier.TYPE_CHOICES,
-            soldiers_count=range(1, 6),
+            soldiers_count=range(1, 4),
         )
         return render(request, self.template_name, context)
 
@@ -82,7 +72,7 @@ class Warriors(TemplateView):
             memberships=MEMBERSHIP_TYPE_CHOICES,
             situations=SITUATION_CHOICES,
             soldiers_type=Soldier.TYPE_CHOICES,
-            soldiers_count=range(1, 6),
+            soldiers_count=range(1, 4),
             valid=valid,
             icon=icon,
             message=msg
