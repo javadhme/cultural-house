@@ -17,6 +17,17 @@ $(document).ready(function(){
         $('#add_row').append(body);
     });
 
+    $('#add_row').on('click', '.remove_soldier', function (event) {
+        event.preventDefault();
+        var c = $('#add_row').find('tr').length - 1;
+        console.log(c);
+        if(c >= 1){
+            $(this).parent('td').parent('tr').remove();
+        }else{
+            alert("شما نمیتوانید آخرین را حذف کنید");
+        }
+    });
+
 });
 
 

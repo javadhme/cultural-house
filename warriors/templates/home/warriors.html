@@ -60,14 +60,16 @@
                                     </tr>
                                     <tr>
                                         <td style="border: 0;">
+
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                                     </div>
-                                                    <input name="shooting_date" required style="text-align: right" class="form-control datepicker" placeholder="{% trans "Shooting date" %}" type="text">
+                                                    <input name="shooting_date" required id="shooting_date" class="form-control" placeholder="{% trans "Shooting date" %}" type="text" autocomplete="off">
                                                 </div>
                                             </div>
+
                                         </td>
                                         <td style="border: 0;">
                                             <div class="form-group">
@@ -82,11 +84,11 @@
                         </div>
 
                         <div class="text-center mt-5">
-                            <table class="table to_rtl">
-                                <caption class="to_rtl">
-                                    <a id="add_soldier"><i class="fa fa-plus-circle" style="font-size: 24px"></i></a>
-                                    {% trans "List of soldier" %}
+                            <table class="table to_rtl modify_table">
+                                <caption style="text-align: center;">
+                                    <a id="add_soldier"><i class="fa fa-plus-circle" style="font-size: 28px;color: #30b540cc;"></i></a>
                                 </caption>
+
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -98,6 +100,7 @@
                                         <th scope="col">{% trans "Workplace" %}</th>
                                         <th scope="col">{% trans "Phone" %}</th>
                                         <th scope="col">{% trans "Type" %}</th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody id="add_row">
@@ -110,7 +113,7 @@
                                         <td><input type="text" name="responsibility_{{ i }}" class="form-control" /></td>
 
                                         <td>
-                                            <select name="membership_type_{{ i }}" class="form-control form-control-alternative">
+                                            <select name="membership_type_{{ i }}" class="form-control form-control-alternative modify_select">
                                                 <option value="">...</option>
                                                 {% for k, v in memberships %}
                                                     <option value="{{ k }}">{{ v }}</option>
@@ -119,7 +122,7 @@
                                         </td>
 
                                         <td>
-                                            <select name="situation_{{ i }}" class="form-control form-control-alternative">
+                                            <select name="situation_{{ i }}" class="form-control form-control-alternative modify_select">
                                                 <option value="">...</option>
                                                 {% for k, v in situations %}
                                                     <option value="{{ k }}">{{ v }}</option>
@@ -131,13 +134,15 @@
                                         <td><input type="text" name="phone_{{ i }}" class="form-control" /></td>
 
                                         <td>
-                                            <select name="type_{{ i }}" class="form-control form-control-alternative">
+                                            <select name="type_{{ i }}" class="form-control form-control-alternative modify_select">
                                                 <option value="">...</option>
                                                 {% for k, v in soldiers_type %}
                                                     <option value="{{ k }}">{{ v }}</option>
                                                 {% endfor %}
                                             </select>
                                         </td>
+
+                                        <td><a class="remove_soldier"><i class="fa fa-minus-circle"></i></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

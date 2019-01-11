@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{% static 'home/assets/vendor/nucleo/css/nucleo.css' %}" />
     <link rel="stylesheet" href="{% static 'home/assets/vendor/font-awesome/css/font-awesome.min.css' %}" />
     <link rel="stylesheet" href="{% static 'home/assets/css/argon.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'home/assets/vendor/datepicker/css/kamadatepicker.css' %}" />
     <link rel="stylesheet" href="{% static 'home/assets/css/styles.css' %}" />
 {% endblock %}
 {# End Head #}
@@ -38,6 +40,19 @@
     <script src="{% static 'home/assets/vendor/nouislider/js/nouislider.min.js' %}"></script>
     <script src="{% static 'home/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
     <script src="{% static 'home/assets/js/argon.min.js' %}"></script>
+
+    <script src="{% static 'home/assets/vendor/datepicker/js/kamadatepicker.js' %}"></script>
     <script src="{% static 'home/assets/js/scripts.js' %}"></script>
+    <script>
+        kamaDatepicker('shooting_date', {
+			buttonsColor: "red",
+			forceFarsiDigits: true,
+			markToday: true,
+			markHolidays: true,
+			highlightSelectedDay: true,
+			sync: true,
+			gotoToday: true
+		});
+    </script>
 {% endblock %}
 {# End Scripts #}
