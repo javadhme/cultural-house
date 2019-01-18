@@ -6,3 +6,9 @@
 .modify_select{width: 85px;}
 .modify_table{font-size: 14px;}
 .table th{text-align: center;}
+.bd-table{background: #fff;}
+.bd-calendar {width: auto !important;}
+.bd-table td {padding: 0;margin: 0;}
+.bd-table-days button, .bd-next, .bd-prev{font-size: 14px;}
+.bd-goto-today{width: auto;}
+.db-title{width: auto !important;}
