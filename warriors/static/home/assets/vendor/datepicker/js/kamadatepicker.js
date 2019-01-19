@@ -88,10 +88,11 @@ var kamaDatepicker = function (elementID, opt) {
     }
 
     // create parent div
-    inputElement.wrap("<div id='bd-root-" + elementID + "' style='position: relative;'></div>");
+    inputElement.wrap("<div id='bd-root-" + elementID + "' style='position: relative;direction: rtl;width: 300px;'></div>");
 
     // create main div for calendar, below input element
-    inputElement.after("<div id='bd-main-" + elementID + "' class='bd-main bd-hide' style='position: absolute; direction: rtl;'></div>");
+    inputElement.before("<div id='bd-main-" + elementID + "' class='bd-main bd-hide' style='position: absolute; direction: rtl;'></div>");
+
     var mainDiv = $("#bd-main-" + elementID);
 
     // create calendar div inside main div
