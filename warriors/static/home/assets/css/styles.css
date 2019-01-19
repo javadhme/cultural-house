@@ -1,3 +1,9 @@
+@font-face {
+  font-family: shabnam;
+  src: url(../font/shabnam/Shabnam.woff);
+}
+
+div, p, select, option, ul, li, html, body {font-family: shabnam, serif !important;}
 .to_rtl{direction: rtl;text-align: right}
 .without_border{border: 0;}
 #add_soldier{cursor: pointer;}
