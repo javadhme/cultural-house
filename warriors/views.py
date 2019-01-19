@@ -1,6 +1,8 @@
 from datetime import datetime
 from django.shortcuts import render
 from django.views.generic import TemplateView
+
+from warriors.forms import ReportForm, ReportSoldierInlineForm
 from warriors.models import MEMBERSHIP_TYPE_CHOICES, SITUATION_CHOICES, Report, Soldier
 
 
