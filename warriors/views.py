@@ -1,3 +1,5 @@
+import calendar
+from utils import jalali
 from datetime import datetime
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -22,13 +24,15 @@ class Warriors(TemplateView):
 
     def post(self, request):
         data = request.POST
+        convert_date = jalali.Persian(data.get('shooting_date')).gregorian_string("{}-{}-{}")
+        shooting_date = datetime.strptime(convert_date, "%Y-%m-%d").date()
 
         report = Report(
             image=request.FILES['image'],
             owner_phone=data.get('owner_phone'),
             photographer_name=data.get('photographer_name'),
             photographer_address=data.get('photographer_position'),
-            shooting_date=datetime.now().date(),
+            shooting_date=shooting_date,
             camp_name=data.get('camp_name'),
             operational_area=data.get('operational_area'),
             division_commander=data.get('division_commander'),
@@ -78,3 +82,11 @@ class Warriors(TemplateView):
             message=msg
         )
         return render(request, self.template_name, context)
+
+    @staticmethod
+    def add_months(source, months):
+        month = source.month - 1 + months
+        year = source.year + month / 12
+        month = month % 12 + 1
+        day = min(source.day, calendar.monthrange(year, month)[1])
+        return datetime.date(year, month, day)
